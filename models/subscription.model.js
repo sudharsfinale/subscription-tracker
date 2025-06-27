@@ -17,7 +17,7 @@ const SubscriptionSchema = new Schema(
     },
     currency: {
       type: String,
-      enum: ["USD", "IND"],
+      enum: ["USD", "INR"],
       default: "INR",
     },
     frequency: {
@@ -27,12 +27,12 @@ const SubscriptionSchema = new Schema(
     category: {
       type: String,
       enum: [
-        "sports",
-        "news",
-        "entertainment",
-        "lifestyle",
-        "technology",
-        "other",
+        "Sports",
+        "News",
+        "Entertainment",
+        "Lifestyle",
+        "Technology",
+        "Other",
       ],
       required: true,
     },
@@ -58,7 +58,6 @@ const SubscriptionSchema = new Schema(
     },
     renewalDate: {
       type: Date,
-      required: true,
       validate: {
         validator: function validate(value) {
           return value > this.startDate;
@@ -66,7 +65,7 @@ const SubscriptionSchema = new Schema(
         message: "Renewal date must be after the start date",
       },
     },
-    user: {
+    createdBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
